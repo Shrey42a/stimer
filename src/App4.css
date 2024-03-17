@@ -1,0 +1,445 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.crd {
+    -webkit-perspective: 1500px;
+    perspective: 1500px;
+    position: absolute;
+    left: calc(50% - 350px);
+    top: calc(50% - 250px);
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -webkit-transition-delay: initial;
+    transition-delay: initial;
+    -webkit-transform: rotate(-10deg) translate(0, 0);
+    transform: rotate(-10deg) translate(0, 0);
+    -webkit-animation: crdIn 1s alternate cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    animation: crdIn 1s alternate cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+
+@media (max-width: 479px) {
+    .crd {
+        left: calc(50% - 200px);
+        top: calc(50% - 107px);
+    }
+}
+
+.crd:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 50px #000;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 479px) {
+    .crd.is-opened {
+        -webkit-transform: rotate(0deg) translate(0px, 25px);
+        transform: rotate(0deg) translate(0px, 125px);
+    }
+}
+
+@media (max-width: 479px) {
+    .crd.is-opened .cart-page-front {
+        -webkit-transform: rotateX(-180deg) translate(0px, 200px);
+        transform: rotateX(-180deg) translate(0px, 300px);
+    }
+}
+
+@-webkit-keyframes crdIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: rotate(-10deg) translate(0, -100%);
+        transform: rotate(-10deg) translate(0, -100%);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: rotate(-10deg) translate(0, 0);
+        transform: rotate(-10deg) translate(0, 0);
+    }
+}
+
+@keyframes crdIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: rotate(-10deg) translate(0, -100%);
+        transform: rotate(-10deg) translate(0, -100%);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: rotate(-10deg) translate(0, 0);
+        transform: rotate(-10deg) translate(0, 0);
+    }
+}
+
+@media (max-width: 479px) {
+
+    .crd,
+    .crd-page {
+        width: 440px;
+        height: 300px;
+    }
+}
+
+.crd-page {
+    -webkit-transition: -webkit-transform 1s ease-in-out;
+    transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    outline: 1px solid transparent;
+}
+
+.cart-page-front {
+    -webkit-transform-origin: 0 50% 0;
+    transform-origin: 0 50% 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateY(-20deg);
+    transform: rotateY(-20deg);
+    z-index: 2;
+}
+
+.cart-page-outside,
+.cart-page-inside {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+}
+
+.cart-page-outside {
+    border: 10px solid #fbfbfb;
+    background: #c72320 url("https://img.freepik.com/free-vector/happy-birthday-with-realistic-balloons-soft-colors_1361-3243.jpg?t=st=1656540850~exp=1656541450~hmac=d03035bdb4b8dcf5cffe7069f5957b2ed4f19c9beb6cfbc6616ed186ac24f5c4&w=2000") repeat center;
+    background-size: cover;
+    box-shadow: 3px 3px 10px #00eeff,
+        -4px -4px 10px #00ff33;
+    width: 100%;
+    height: 100%;
+}
+
+.fnt {
+    font-family: 'Monoton';
+    font-weight: 500;
+    color: #00ffd5;
+}
+
+.cart-page-inside,
+.cart-page-bottom {
+    background: rgb(245, 0, 131, 0.19);
+    box-shadow: 3px 3px 10px #00eeff,
+        -4px -4px 10px #00ff33;
+    display: -webkit-box;
+    text-transform: uppercase;
+    display: -moz-box;
+    display: -moz-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    box-pack: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    box-align: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    text-align: center;
+}
+
+.cart-page-inside {
+    -webkit-transform: rotatex(-180deg);
+    transform: rotatex(-180deg);
+    border-right: none !important;
+    background-position: 0px 80px;
+}
+
+@media (max-width: 479px) {
+    .cart-page-inside {
+        background-position: 0px 30px;
+    }
+}
+
+.cart-page-bottom {
+    z-index: 1;
+    border-left: none !important;
+    background-position: -22px 80px;
+}
+
+@media (max-width: 479px) {
+    .cart-page-bottom {
+        background-position: 0px 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .bgx2 {
+        height: 72rem;
+        width: 32rem;
+        background-image: url("https://enjoycss.com/bg-img/custom/14556-k6ejx6.v064c.png");
+        background-position: cover;
+        background-color: black;
+    }
+}
+
+.merry-christmas image {
+    width: 350px;
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .merry-christmas image {
+        width: 200px;
+    }
+}
+
+@media (max-width: 479px) {
+    .merry-christmas image {
+        width: 150px;
+    }
+}
+
+.click-icon {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    bottom: 20px;
+    -webkit-animation: iconAnimation 0.3s infinite alternate ease-in-out;
+    animation: iconAnimation 0.3s infinite alternate ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.click-icon svg {
+    width: 96px;
+    height: 96px;
+}
+
+@media (max-width: 767px) {
+    .click-icon svg {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+@media (max-width: 479px) {
+    .click-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.click-icon.is-hidden {
+    opacity: 0;
+}
+
+@-webkit-keyframes iconAnimation {
+    0% {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        -webkit-transform: translate(-50%, 10px);
+        transform: translate(-50%, 10px);
+    }
+}
+
+@keyframes iconAnimation {
+    0% {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        -webkit-transform: translate(-50%, 10px);
+        transform: translate(-50%, 10px);
+    }
+}
+
+p {
+    font-family: "Mirza", Verdana, Arial, serif;
+    font-size: 36px;
+    line-height: 1.2em;
+    padding-left: 10px;
+}
+
+@media (max-width: 767px) {
+    p {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 479px) {
+    p {
+        font-size: 20px;
+    }
+}
+
+canvas {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 1;
+    background-color: transparent;
+  }
+/*new card*/
+
+.color1{color:#00ff0d}
+.color2{
+    color:#d9ff00;
+}
+
+.bgm2{
+    height: 100vh;
+    width: 100vw;
+    border-image: fill 0 linear-gradient(#0003, #000);
+}
+
+.card {
+	color: #00d9ff; /*SHERPA BLUE*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 400px;
+	backdrop-filter: blur(12px) saturate(99%);
+    -webkit-backdrop-filter: blur(12px) saturate(99%);
+    background-color: rgba(17, 25, 40, 0.41);
+	transform-style: preserve-3d;
+	transform: translate(-50%,-50%) perspective(2000px);
+	box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 20px 0 60px rgba(0,0,0,.5);
+	transition: 1s;
+    font-family: "Vibes", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.card:hover {
+	transform: translate(-50%,-50%) perspective(2000px) rotate(10deg) scale(1.2);
+	box-shadow: inset 20px 0 50px rgba(0,0,0,.5), 0 10px 100px rgba(0,0,0,.5);
+}
+
+.card:before {
+	content:'';
+	position: absolute;
+	top: -5px;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: #BAC1BA;
+	transform-origin: bottom;
+	transform: skewX(-25deg);
+}
+
+.card:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -5px;
+	width: 5px;
+	height: 100%;
+	background: #92A29C;
+	transform-origin: left;
+	transform: skewY(-45deg);
+}
+
+.card .imgBox {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transform-origin: left;
+	transition: .7s;
+}
+
+.card .bark {
+	position: absolute;
+	background: #e0e1dc;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: .7s;
+}
+
+.card .imgBox img {
+	min-width: 250px;
+	max-height: 400px;
+}
+
+.card:hover .imgBox {
+	transform: rotateY(-135deg);
+}
+
+.card:hover .bark {
+	opacity: 1;
+	transition: .6s;
+  box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+}
+
+.card .details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	z-index: -1;
+	margin-top: 5px;
+}
+
+.card .details p {
+	font-size: 18px;
+	line-height: 27px;
+	padding: 0 0 0 10px;
+    font-family: "Crafty Girls", cursive;
+  font-weight: 400;
+  font-style: normal
+}
+
+.card .details h2 {
+    font-family: "Vibes", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.card .details h4 {
+    font-size: 28px;
+    font-family: "Rubik Distressed", system-ui;
+  font-weight: 400;
+  font-style: normal
+}
+
+.text-right {
+	text-align: right;
+}
+
+.txtbg {
+    background-color: rgba(17, 25, 40, 0.41);
+}
