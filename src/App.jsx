@@ -5,7 +5,7 @@ import "./App4.css";
 import { CountdownTimer } from "./CountdownTimer";
 
 function App() {
-  const NOW_IN_MS = new Date("March 17, 2023 23:59:59").getTime();
+  const NOW_IN_MS = new Date("March 17, 2024 23:59:59").getTime();
   const dateTimeAfterThreeDays = NOW_IN_MS;
   return (
     <>
